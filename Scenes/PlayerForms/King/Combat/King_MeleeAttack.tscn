@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d6c66b5dvepk"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerForms/King/Skills/MeleeAttack.gd" id="1_rcp5a"]
+[ext_resource type="Texture2D" uid="uid://4wcqkbisxnbe" path="res://Assests/Forms/Goblin/goblin.png" id="2_fvmdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4u4hp"]
+size = Vector2(15, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v17m"]
+size = Vector2(8, 8.5)
+
+[node name="KingMeleeAttack" type="CharacterBody2D"]
+texture_filter = 1
+collision_mask = 8
+script = ExtResource("1_rcp5a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fvmdg")
+hframes = 17
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, -1)
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_4u4hp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_2v17m")
+
+[connection signal="area_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_area_entered"]

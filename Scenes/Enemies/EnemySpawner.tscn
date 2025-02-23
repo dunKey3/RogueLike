@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7tumel5ybsj"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="1_o6cds"]
+[ext_resource type="PackedScene" uid="uid://ctp5mgfmhi2oe" path="res://Scenes/Enemies/BaseGoblin/BaseGoblin.tscn" id="2_g08ka"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_o6cds")
+enemy_scene = ExtResource("2_g08ka")
+spawn_interval = 6.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true

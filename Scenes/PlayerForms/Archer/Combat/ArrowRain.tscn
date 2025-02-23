@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://df15tkw63i8rk"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerForms/Archer/Combat/arrow_rain.gd" id="1_crbyv"]
+
+[node name="ArrowRain" type="Node2D"]
+script = ExtResource("1_crbyv")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Node2D3" type="Node2D" parent="."]
+
+[node name="Node2D4" type="Node2D" parent="."]
+
+[node name="Node2D5" type="Node2D" parent="."]
+
+[node name="Node2D6" type="Node2D" parent="."]
+
+[node name="Node2D7" type="Node2D" parent="."]
+
+[node name="Node2D8" type="Node2D" parent="."]
+
+[node name="Node2D9" type="Node2D" parent="."]
+
+[node name="Node2D10" type="Node2D" parent="."]

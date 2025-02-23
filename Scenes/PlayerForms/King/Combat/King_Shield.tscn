@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://qu7e0dr16w5t"]
+
+[ext_resource type="Texture2D" uid="uid://4wcqkbisxnbe" path="res://Assests/Forms/Goblin/goblin.png" id="1_2172l"]
+
+[node name="KingShield" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(16, 0)
+texture = ExtResource("1_2172l")
+hframes = 17
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-16, 0)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_2172l")
+hframes = 17

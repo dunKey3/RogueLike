@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://76tdxuunvvu0"]
+
+[ext_resource type="Texture2D" uid="uid://do8xmfxsx547c" path="res://Assests/Forms/King/king.png" id="1_j7tmh"]
+[ext_resource type="Script" path="res://Scripts/PlayerForms/King/king.gd" id="1_yaksi"]
+
+[sub_resource type="Curve" id="Curve_ubov5"]
+_data = [Vector2(0.011236, 0.928085), 0.0, 0.0, 0, 0, Vector2(0.503371, 0.889924), 0.0, 0.0, 0, 0, Vector2(0.988764, 0.493649), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_wg68q"]
+resource_name = "Dash"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 13]
+}
+
+[sub_resource type="Animation" id="Animation_aodjf"]
+resource_name = "Idle"
+length = 0.001
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t4dfq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_56utq"]
+resource_name = "jump"
+length = 0.7
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_y5odr"]
+resource_name = "walk"
+loop_mode = 1
+step = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [null, 1, 2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dlnqt"]
+_data = {
+"Dash": SubResource("Animation_wg68q"),
+"Idle": SubResource("Animation_aodjf"),
+"RESET": SubResource("Animation_t4dfq"),
+"jump": SubResource("Animation_56utq"),
+"walk": SubResource("Animation_y5odr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4c7a"]
+size = Vector2(9.5, 11.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjmee"]
+size = Vector2(9, 13.5)
+
+[node name="King" type="CharacterBody2D"]
+script = ExtResource("1_yaksi")
+dash_curve = SubResource("Curve_ubov5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_j7tmh")
+hframes = 17
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_dlnqt")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_q4c7a")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 6.75)
+shape = SubResource("RectangleShape2D_kjmee")

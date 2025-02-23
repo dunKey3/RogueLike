@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://wp6gagiw8t7i"]
+
+[ext_resource type="Script" path="res://Scripts/HUD/hud.gd" id="1_h0gpd"]
+[ext_resource type="Texture2D" uid="uid://0ntalqvumhiv" path="res://Assests/Testing/icon.svg" id="2_lsch1"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_h0gpd")
+
+[node name="Health and skills" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 41.0
+offset_right = 175.0
+offset_bottom = 51.0
+
+[node name="Health" type="ProgressBar" parent="Health and skills"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+rounded = true
+
+[node name="Skill1" type="TextureRect" parent="Health and skills"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 1.0
+anchor_right = 0.187
+anchor_bottom = 1.0
+offset_left = -25.058
+offset_top = -25.0
+offset_right = -10.058
+offset_bottom = -10.0
+grow_vertical = 0
+texture = ExtResource("2_lsch1")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Skill2" type="TextureRect" parent="Health and skills"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.407
+anchor_top = 1.0
+anchor_right = 0.407
+anchor_bottom = 1.0
+offset_left = -39.538
+offset_top = -25.0
+offset_right = -24.538
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_lsch1")
+expand_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 2
+
+[node name="Timer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Timer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5age8kk358x4"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerForms/Archer/Combat/arrow.gd" id="1_nsk4q"]
+[ext_resource type="Texture2D" uid="uid://bkjkqii6r62va" path="res://Assests/Forms/Archer/Pure_01.png" id="2_u32d6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1inli"]
+size = Vector2(15, 7)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oc8a0"]
+radius = 7.0
+height = 20.0
+
+[node name="Arrow" type="CharacterBody2D"]
+z_index = 999
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_nsk4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.00002, 2)
+scale = Vector2(0.266875, 0.235294)
+texture = ExtResource("2_u32d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_1inli")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_oc8a0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

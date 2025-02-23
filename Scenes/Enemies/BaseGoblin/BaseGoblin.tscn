@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctp5mgfmhi2oe"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/BaseGoblin/BaseGoblin.gd" id="1_h2ntf"]
+[ext_resource type="Texture2D" uid="uid://4wcqkbisxnbe" path="res://Assests/Forms/Goblin/goblin.png" id="2_pny6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5tc0"]
+size = Vector2(15, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woade"]
+size = Vector2(17, 20)
+
+[node name="BaseGoblin" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_h2ntf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_pny6t")
+hframes = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_t5tc0")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy_hurtbox"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_woade")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 7.0
+offset_top = -8.0
+offset_right = 11.0
+offset_bottom = 19.0
+rotation = 1.5708
+scale = Vector2(0.60172, 0.530462)
+max_value = 60.0
+value = 60.0
+rounded = true
+fill_mode = 3
+show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 400.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ixp0kljiuci"]
+
+[ext_resource type="Script" path="res://Scripts/Testing/Terminal.gd" id="1_5ga5j"]
+
+[node name="Terminal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(120, 120)
+layout_direction = 2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 3
+script = ExtResource("1_5ga5j")
